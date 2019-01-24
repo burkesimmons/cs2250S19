@@ -25,10 +25,17 @@
 // Main Function
 int main()
 {
+    var radius;
+    var angle;
+
     // 1) Capture user input for radius and theta angle(degrees)
-    //
+    printf("What is the radius?")
+    scanf("%d", &radius);
+    printf("What is the angle in degrees?")
+    scanf("%d", &angle);
+    
     // 2) Convert the theta angle to radians
-    //
+    
     // 3) Calculate your cartesian coordinates
     //
     // 4) Print the result
