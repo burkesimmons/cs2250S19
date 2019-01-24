@@ -24,20 +24,32 @@
 // Main Function
 int main()
 {
-    int num;
-    printf("Enter an integer: ");
-    scanf("%d", &num);
+    int num1, num2;
+//    int num2;
+    printf("Enter an even and an odd integer: ");
+    scanf("%d %d", &num1, &num2);
     //test value for even or odd
-    if (num % 2 == 0)
+//    if (num1 % 2 == 0)
+    if ((num1 + num2) % 2 != 0)
     {
-        printf("%d is even\n", num);
+        printf("%d and %d are an even and odd numbers\n", num1, num2);
     }
     else
     {
-        printf("%d is odd\n", num);
+        printf("%d and %d are not even and odd numbers\n", num1);
+    }
+        //test value for even or odd
+    if (num2 % 2 == 0)
+    {
+        printf("%d is even\n", num2);
+    }
+    else
+    {
+        printf("%d is odd\n", num2);
     }
     printf("Adios amigo\n");
-        return 0;
+
+    return 0;
 }
 // Function Definitions
 
