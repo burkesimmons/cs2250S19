@@ -28,7 +28,27 @@
 // Main Function
 int main()
 {
+    int angle;
+    printf("Enter an angle between 0 and 360 degrees:\n");
+    scanf("%d", &angle);
 
+    if (angle > 0 && angle < 90) //Quadrant I
+    {
+    printf("Your angle is in Quadrant I\n");
+    }
+    else if (angle > 90 && angle < 180) //Quadrant II
+    {
+    printf("Your angle is in Quadrant II\n");
+    }
+    else if (angle > 180 && angle < 270) //Quadrant III
+    {
+    printf("Your angle is in Quadrant III\n");
+    }
+    else if (angle > 270 && angle < 360) //Quadrant IV
+    {
+    printf("Your angle is in Quadrant IV\n");
+    }
+   
     return 0;
 }
 // Function Definitions
