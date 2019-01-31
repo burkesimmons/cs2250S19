@@ -12,7 +12,7 @@
  *        Version:  1.0
  *        Created:  01/31/2019 08:35:35 AM
  *       Revision:  none
- *       Compiler:  gcc angle.c -o angle.out
+ *       Compiler:  gcc angle.c -o angle.out -lm
  *
  *         Author:  Burke Simmons (), burkesimmons@mail.weber.edu
  *   Organization:  WSU
@@ -20,7 +20,8 @@
  * =====================================================================================
  */
 #include <stdio.h>
-
+#include <stdlib.h> // for regular abs()
+#include <math.h>
 // Constants
 
 // Function Prototypes
@@ -31,6 +32,16 @@ int main()
     int angle;
     printf("Enter an angle between 0 and 360 degrees:\n");
     scanf("%d", &angle);
+    
+// Check for angles > 360;
+     angle = angle % 360;
+
+    if(angle < 0)
+    {
+        angle = abs(360 + angle);
+    }
+
+   
 
     if (angle > 0 && angle < 90) //Quadrant I
     {
