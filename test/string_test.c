@@ -48,8 +48,9 @@ int main()
     scanf("%lf", &userDouble);
 
     printf("Enter character:\n");
+    //push to github with no password
     scanf(" %c", &userCharacter);
-
+    printf("this is new");
     printf("Enter string:\n");
     scanf("%s", userString);
 
