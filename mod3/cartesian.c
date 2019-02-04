@@ -3,7 +3,8 @@
  *
  *       Filename:  cartesian.c
  *
- *    Description:  
+ *    Description:  Calculate the cartesian coordinates based on:
+ *                  radius and theta angle(degrees)
  *
  *        Version:  1.0
  *        Created:  01/24/2019 08:42:24 AM
