@@ -3,7 +3,7 @@
  *
  *       Filename:  even_odd.c
  *
- *    Description:  Determine ifthe input value is odd or even
+ *    Description:  Determine if the input value is odd or even
  *
  *        Version:  1.0
  *        Created:  01/24/2019 09:37:55 AM
@@ -25,7 +25,7 @@
 int main()
 {
     int num1, num2;
-//    int num2;
+
     printf("Enter an even and an odd integer: ");
     scanf("%d %d", &num1, &num2);
     //test value for even or odd
