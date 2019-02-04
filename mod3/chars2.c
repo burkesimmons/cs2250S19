@@ -3,7 +3,7 @@
  *
  *       Filename:  chars2.c
  *
- *    Description:  
+ *    Description:  More characters fixtures
  *
  *        Version:  1.0
  *        Created:  01/22/2019 09:08:14 AM
@@ -31,12 +31,10 @@ int main()
     printf("Your initial is[%c]\n", c);
     printf("C is %c\n", c);
     printf("C is %d\n", c);
-    printf("C is 0x%X\n", c); // %X for hex notation
+    printf("C is %X\n", c); // %X for hex notation
     printf("C is 0x%x\n", c);
     
 
     return 0;
 }
 // Function Definitions
-
-
