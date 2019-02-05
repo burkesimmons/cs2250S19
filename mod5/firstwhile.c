@@ -27,10 +27,21 @@ int main()
     // Task 1: Calculate the average of user input values
     int count = 0;
     float grade, avg;
+    float total = 0;
 
     while(count < MAXCOUNT) {
-        printf("Enter %d hw grade(0-100): "), count);
+        printf("\nEnter %d hw grade(0-100): ", count + 1);
+        scanf("%f", &grade);
+
+        total += grade; // add up grades
+
+        
+        count++; //update test condition: sentinel
     }
+    avg = total/MAXCOUNT;
+    printf("Your avg is [%6.2f]\n", avg);
+    printf("\nBye amigo\n");
+
     return 0;
 }
 // Function Definitions
