@@ -32,6 +32,10 @@ int main()
     while(count < MAXCOUNT) {
         printf("\nEnter %d hw grade(0-100): ", count + 1);
         scanf("%f", &grade);
+        if (grade < 0 || grade > 100) {
+            printf("Invalid input. Please try again\n");
+            continue;   //invalid input
+        }
 
         total += grade; // add up grades
 
