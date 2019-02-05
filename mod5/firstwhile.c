@@ -35,10 +35,12 @@ int main()
     //         and if user enters a value greater than MAXCOUNT, set it to MAXCOUNT
     // Task 5: Support multiple student entries. Calculate class average.
     // Task 6: Display support letter grade
+    // Task 7: Print a class average
+    int hw_count;
     int grade_count = 0, student_count = 1;
     float grade, avg;
-    float total = 0;
-    int hw_count = 0;
+    float total = 0, class_avg = 0;
+   
     
 
     while(student_count <= MAXSTUDENTS)         // loop over students
@@ -77,9 +79,11 @@ int main()
         printf("Your avg is [%6.2f]\n", avg);
         grade_count = 0;   // reset homework grade count
         total = 0;
-
+        class_avg += avg;       //get class avg
+       
         student_count++;
     }  // end of students loop
+    printf("The class average is [%6.2f]\n", class_avg/MAXSTUDENTS);
     printf("\nBye amigo\n");
 
     return 0;
