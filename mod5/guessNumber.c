@@ -19,7 +19,7 @@
 #include <stdlib.h> // needed for rand()
 #include <time.h> // time()
 // Constants
-#define MAX 3
+#define MAX 5
 #define LIMIT 100
 // Function Prototypes
 
