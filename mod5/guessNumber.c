@@ -25,7 +25,7 @@
 int main()
 {
     int number, guess;
-    guess = rand();
+    guess = rand() %10;
     //int i; // before C89 you need to define i outside the loop
     for (int i = 0; i < MAX; i++) {
         printf("Please guess a number between 0 and 10\n");
