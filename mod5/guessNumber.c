@@ -17,6 +17,7 @@
  */
 #include <stdio.h>
 #include <stdlib.h> // needed for rand()
+#include <time.h> // time()
 // Constants
 #define MAX 3
 // Function Prototypes
@@ -25,7 +26,8 @@
 int main()
 {
     int number, guess;
-    guess = rand() %10;
+    srand(time(0));         //set the random SEED
+    guess = rand() %10;     // set the random number between 0-9
     //int i; // before C89 you need to define i outside the loop
     for (int i = 0; i < MAX; i++) {
         printf("Please guess a number between 0 and 10\n");
