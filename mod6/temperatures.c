@@ -25,14 +25,25 @@
 int main()
 {
     double max_ogden[NUM];
+    double min_ogden[NUM];
+    int i;
 
-    max_ogden[0] = 40;
-    max_ogden[1] = 38;
-    max_ogden[2] = 44;
-    max_ogden[3] = 40;
+    // Task: Capture max and min temps from user
+    
+    printf("Enter maximum temperatures for your city for the next %d days\n", NUM);
+    for (i = 0; i < NUM; i++) {
+        printf("%d day max and min\n", i+1);
+        scanf("%lf %lf", &max_ogden[i], &min_ogden[i]);
+    }
 
-    printf("First max temp in Ogden is [%6.2lf]\n", max_ogden[0]);
-
+    //Task: calculate the average and min and maxof the date 
+    //range for (int i = 0; i < NUM; i)
+    //{
+    
+    for(i = 0; i < NUM; i++)
+    {
+        printf("%d) max[%6.2lf] min[%6.2lf] temps in Ogden\n", i+1, max_ogden[i], min_ogden[i]);
+    }
     return 0;
 }
 // Function Definitions
