@@ -23,6 +23,7 @@
 #define ADD 1
 #define SUB 2
 #define MUL 3
+#define EXIT 0
 // Function Prototypes
 
 // Main Function
@@ -41,26 +42,32 @@ int main(int argc, char* argv[])
     // Convert input strings to integers
     num1 = atoi(argv[1]); // first input param
     num2 = atoi(argv[2]); // second input param
-
-    printf("What do you want to do you want to do with these numbers?\n");
-    printf("\t 1) Addition\n");
-    printf("\t 2) Subtraction\n");
-    printf("\t 3) Multiplication\n");
-    scanf("%d", &choice);
-    switch(choice)
+ 
+    do          // beginning of do while
     {
-        case ADD:
-            printf("%d + %d is %d\n",num1,num2, num1 +num2);
-            break;
-            case SUB:
-            printf("%d - %d is %d\n", num1, num2, num1 - num2);
-            break;
-            case MUL:
-            printf("%d * %d is %d\n", num1, num2, num1 * num2);
-            break;
-            default:
-            printf("Unsupported function\n");
-    }
+        
+        printf("What do you want to do you want to do with these numbers?\n");
+        printf("\t 1) Addition\n");
+        printf("\t 2) Subtraction\n");
+        printf("\t 3) Multiplication\n");
+        printf("\t 0) To quit\n");
+        scanf("%d", &choice);
+       
+        switch(choice)
+            {
+                case ADD:
+                    printf("%d + %d is %d\n",num1,num2, num1 +num2);
+                    break;
+                case SUB:
+                    printf("%d - %d is %d\n", num1, num2, num1 - num2);
+                    break;
+                case MUL:
+                    printf("%d * %d is %d\n", num1, num2, num1 * num2);
+                    break;
+                default:
+                    printf("Unsupported function\n");
+            }
+    } while(choice != EXIT); // end of do while
 
     printf("Adios amigo\n");
     return 0;

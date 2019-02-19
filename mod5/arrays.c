@@ -30,10 +30,14 @@ int main()
         printf("Enter a number: \n");
         // DO NOT use the address (&) operator
         // Make sure you specify the index position in []
-        scanf("%d", grades[i]); // TODO: How do I save the values???
+        scanf("%d", &grades[i]); // TODO: How do I save the values???
 
     }
-    printf("First number is [%d]\n", grades[0]);
+    for (int i = 0; i < NUM; ++i)
+    {
+        printf("Number %d is [%d]\n", i+1, grades[i]);
+    }
+
     return 0;
 }
 // Function Definitions

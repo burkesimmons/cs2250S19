@@ -46,21 +46,20 @@ int main()
             {
                 people[i][j] = rand() % 200;  // set weight 0-200 kg
             }
-            else if(j == WEIGHT)
+            else if(j == HEIGHT)
             {
                 people[i][j] = rand() % 200;  // set weight 0-200 cm
             }
         }
     }
     // Now display the information
-    
 
     for (int row = 0 ; row < PERSONS; row ++ ) 
     {
         printf("%d person information\n", row + 1);
         for (int col= 0; col < ATTRI; col++) 
         {
-            switch(col) 
+            switch(col)
             {
                 case AGE:
                     printf("\tYour age is %6.0lf\n", people[row][col]);
