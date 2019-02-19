@@ -22,12 +22,32 @@
 // Function Prototypes
 void Hello_World();
 void Hello_Number(int num);
+int Get_Square(int num);
+int Get_Number();
+int Get_Sum(int num1, int num2);
 
 // Main Function
 int main(int argc, char* argv[])
 {
+    int i1 = 23;
+    int num1, num2, sum;
+
     Hello_World();
+    
     Hello_Number(23);
+    
+    i1 = Get_Square(i1);
+    Hello_Number(i1);
+    
+    i1 = Get_Number();
+    Hello_Number(i1);
+
+    num1 = Get_Number();
+    Hello_Number(num1);
+    num2 = Get_Number();
+    Hello_Number(num2);
+    sum = Get_Sum(num1, num2);
+    Hello_Number(sum);
 
     return 0;
 }
@@ -61,4 +81,56 @@ void Hello_Number(int num)
 {
     printf("Hello %d number\n", num);
     return;
+}
+
+
+/* 
+ * ===  FUNCTION  ======================================================================
+ *         Name:  Get_Square
+ *  Description:  Get the square of an int
+ *  Param:  num => integer value
+ *  Return: the square of num
+ * =====================================================================================
+ */
+
+int Get_Square(int num)
+{
+    int square;
+
+    //Algorithm
+    square = num * num;
+
+    return square;
+}
+
+/* 
+ * ===  FUNCTION  ======================================================================
+ *         Name:  Get_Number
+ *  Description:  Ask user to enter an integer
+ * =====================================================================================
+ */
+
+int Get_Number()
+{
+    int input;
+    //Algorithm
+    printf("Please enter an int value: ");
+    scanf("%d", &input);
+    return input;
+}
+
+
+/* 
+ * ===  FUNCTION  ======================================================================
+ *         Name:  Get_Sum
+ *  Description:  Return the sum of two integers
+ *  Param1: First integer
+ *  Param2: Second integer
+ *  Return: First+ Second
+ * =====================================================================================
+ */
+
+int Get_Sum(int num1, int num2)
+{
+    return num1 + num2;
 }
