@@ -4,6 +4,7 @@
 const int NUM_PLAYERS = 5;
 // Function Prototypes
 void GetUserNumberAndRatings(int nums[], int ratings[]);
+void DisplayRoster(int nums[], int ratings[]);
 
 // Main Function
 int main()
@@ -18,14 +19,9 @@ int main()
 
     // Get user defined jersey numbers and ratings
     GetUserNumberAndRatings(jerseyNums, ratingNums);
-
-
     // Print roster
-    printf("ROSTER\n");
-    for (i = 0; i < NUM_PLAYERS; ++i) 
-    {
-        printf("Player %d -- Jersey number: %d, Rating: %d\n", (i + 1), jerseyNums[i], ratingNums[i]);
-    }
+    DisplayRoster(jerseyNums, ratingNums);
+
 
     // Menu
     do {
@@ -122,7 +118,10 @@ int main()
 /* 
  * ===  FUNCTION  ======================================================================
  *         Name:  GetUserNumberAndRatings
- *  Description:  
+ *  Description:  Collect Players Numbers and Ratings
+ *  Param: nums: Array of int numbers
+ *  Param: ratings: Array of int ratings
+ *  Note: We will link both arrays by index notation
  * =====================================================================================
  */
 
@@ -139,5 +138,26 @@ void GetUserNumberAndRatings(int nums[], int ratings[])
         scanf("%d", &(ratings[i]));
         printf("\n");
     }
-    
+    return;
+}
+
+/* 
+ * ===  FUNCTION  ======================================================================
+ *         Name:  DisplayRoster
+ *  Description:  Display current roster information
+ *  Param: nums: Array of int numbers
+ *  Param: ratings: Array of int ratings
+ * =====================================================================================
+ */
+
+void DisplayRoster(int nums[], int ratings[])
+{
+    int i;
+    // Print roster
+    printf("ROSTER\n");
+    for (i = 0; i < NUM_PLAYERS; ++i) 
+    {
+        printf("Player %d -- Jersey number: %d, Rating: %d\n", (i + 1), nums[i], ratings[i]);
+    }
+    return;
 }
