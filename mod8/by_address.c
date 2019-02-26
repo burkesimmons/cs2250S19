@@ -24,7 +24,7 @@
 void DisplayPosition(double x, double y);
 void DisplayOrigPosition(double* x, double* y);
 void UpdatePosition(double* x, double* y, double new_x, double new_y);
-
+void ResetPosition(double*x, double*y);
 // Main Function
 int main(int argc, char* argv[])
 {
@@ -40,8 +40,9 @@ int main(int argc, char* argv[])
     printf("Your current position address is (%p,%p) (main)\n", &x, &y);
     DisplayOrigPosition(&x, &y);   // takes two addresses of type double
     UpdatePosition(&x, &y, 2.0, 4.1);
-    DisplayOrigPosition(&x, &y);
-
+    DisplayOrigPosition(&x, &y);  //takes two addresses of type double
+    ResetPosition(&x, &y);  // Reset values to origin
+    DisplayOrigPosition(&x, &y);  //takes two addresses of type double
     return 0;
 }
 // Function Definitions
@@ -97,6 +98,26 @@ void UpdatePosition(double* x, double* y, double new_x, double new_y)
     printf("*****Updating position*****\n");
     *x = new_x; // Dereference the pointer to update the value
     *y = new_y;
+
+    return;
+}
+
+
+/* 
+ * ===  FUNCTION  ======================================================================
+ *         Name:  ResetPosition
+ *  Description:  Reset point position to origin (0, 0)
+ *  Param: x => x coordinate address
+ *  Param: y => y coordinate address
+ *  Returns: nothing
+ * =====================================================================================
+ */
+
+void ResetPosition(double* x, double* y)
+{
+    printf("*****Resetin position*****\n");
+    *x = 0; // Dereference the pointer to update the value
+    *y = 0;
 
     return;
 }
