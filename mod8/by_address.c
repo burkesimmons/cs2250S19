@@ -21,6 +21,7 @@
 
 // Function Prototypes
 void DisplayPosition(double x, double y);
+void UpdatePosition(double x, double y,double new_x, double new_y);
 // Main Function
 int main(int argc, char* argv[])
 {
@@ -33,12 +34,47 @@ int main(int argc, char* argv[])
     x = atof(argv[1]);  //convert the first input param to double
     y = atof(argv[2]);  //convert the second input param to double
     DisplayPosition(x, y);
+    UpdatePosition(x, y, 2, 4);
+    DisplayPosition(x, y);
     return 0;
 }
 // Function Definitions
+
+/* 
+ * ===  FUNCTION  ======================================================================
+ *         Name:  DisplayPostion
+ *  Description:  Display current point position
+ *  Param: x => x coordinate
+ *  Param y => y coordinate
+ *  Returns: nothing
+ * =====================================================================================
+ */
 void DisplayPosition(double x, double y)
     {
-        printf("Your initial positionis (%4.2lf,%4.2lf)\n", x, y);
+        printf("Your initial position is (%4.2lf,%4.2lf)\n", x, y);
         return;
     }
 
+
+/* 
+ * ===  FUNCTION  ======================================================================
+ *         Name:  UpdatePosition
+ *  Description:  Update point position to a new position
+ *  Param: x => x coordinate
+ *  Param y => y coordinate
+ *  Param: x_new => new x coordinate
+ *  Param: y_new => new y coordinate
+ *  Returns: nothing
+ * =====================================================================================
+ */
+
+void UpdatePosition(double x, double y,double new_x, double new_y)
+    {
+        printf("*********Updating position*******\n");
+       DisplayPosition(x, y);
+       x = new_x;
+       y = new_y;
+       DisplayPosition(x, y);
+        printf("*********Done Updating position*********\n");
+        return;
+    }
