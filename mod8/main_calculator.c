@@ -29,7 +29,7 @@ int main(int argc, char* argv[])
 {
     int num1 = 8, num2 = 4;
     printf("The sum of %d + %d = %d\n", num1, num2, Add_Numbers(num1, num2));
-    printf("The sub of %d - %d = %d\n", num1, num2, Sub_Numbers(num1, num2));
+    printf("The difference of %d - %d = %d\n", num1, num2, Sub_Numbers(num1, num2));
 
 
     return 0;
