@@ -18,41 +18,8 @@
  */
 #include <stdio.h>
 #include <stdlib.h>
+#include "employee.h"
 
-// Constants & Globals
-typedef struct Employee
-{
-    int idNum;
-    double payRate;
-    double hours;
-    double netPay;
-    double taxRate;
-    double grossPay;
-
-}Employee;
-
-#define TAXRATE1 0.10    //  10%
-#define TAXRATE2 0.25    //  25%
-#define TAXRATE3 0.75    //  75%
-
-// Function Prototypes
-double CalcNet(Employee emp); // pass by value
-double CalcGross(Employee* emp); // pass by reference
-void CreateEmployee(Employee* emp);
-void CalcPay(Employee* emp);
-void DisplayEmp(const Employee* emp);
-
-// Main Function
-int main(int argc, char* argv[])
-{ 
-    Employee waldo;
-
-    CreateEmployee(&waldo);
-    CalcPay(&waldo);
-    DisplayEmp(&waldo);
-
-    return 0;
-}
 // Function Definitions
 
 
