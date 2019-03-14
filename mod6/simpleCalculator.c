@@ -64,6 +64,8 @@ int main(int argc, char* argv[])
                 case MUL:
                     printf("%d * %d is %d\n", num1, num2, num1 * num2);
                     break;
+                case EXIT:
+                    break;
                 default:
                     printf("Unsupported function\n");
             }
