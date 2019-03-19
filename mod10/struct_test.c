@@ -36,7 +36,7 @@ int main(int argc, char* argv[])
     emp.idNum = 12345;
     emp.ptPay = &pay;
 
-    printf("Employee number %d was paid $[%6.2lf]\n", idNum, *emp.ptPay);
+    printf("Employee number %d was paid $[%6.2lf]\n", emp.idNum, *emp.ptPay);
     return 0;
 }
 // Function Definitions
