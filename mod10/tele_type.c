@@ -32,6 +32,7 @@ struct TeleType
 typedef struct TeleType Tele;
 
 // Function Prototypes
+void DisplayTele(Tele* content);
 
 // Main Function
 int main(int argc, char* argv[])
@@ -45,11 +46,29 @@ int main(int argc, char* argv[])
     t1.nextaddr = &t2; // set the address of the next structure
     t2.nextaddr = &t3; // set the address of the next structure
     t3.nextaddr = NULL; // set the address of NULL, lastmember
+    // Display linked list info
+    DisplayTele(first);
 
-    printf("%s\n%s\n", first->name, first->phoneNum);
+    
 
     return 0;
 }
 // Function Definitions
 
 
+/* 
+ * ===  FUNCTION  ======================================================================
+ *         Name:  DisplayTele
+ *  Description:  
+ * =====================================================================================
+ */
+
+void DisplayTele(Tele* content)
+{
+    while(content != NULL)
+    {
+    printf("%-30s\n %-20s\n", content->name, content->phoneNum);
+    content = content->nextaddr;
+    }
+    return;
+}
