@@ -15,7 +15,7 @@
  *  GNU General Public License as published by the Free Software Foundation.
  */
 #ifndef  ITEMTOPURCHASE__INC__
-#define  ITEMTOPURCHASE_INC__
+#define  ITEMTOPURCHASE__INC__
 
 #include <string.h>
 #include <stdbool.h>
@@ -31,6 +31,5 @@ typedef struct ItemToPurchase_struct
 
 void MakeItemBlank(Items* item);
 void PrintItemCost(Items item);
-//double PrintItemCost(ItemToPurchase parameter);
 
-#endif 
+#endif

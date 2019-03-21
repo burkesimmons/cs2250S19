@@ -19,22 +19,6 @@
 
 // Function Definitions
 
-/*
-void EnterItems(Items* item)
-{
-    printf("Item 1\n");
-    printf("Enter the item name:\n");
-    scanf("%s", item.itemName);
-    printf("Enter the item price:\n");
-    scanf("%d", &item.itemPrice);
-    printf("Enter the item quantity:\n");
-    scanf("%d", &item.itemQuantity);
-
-    printf("%s %d @ $%d = %d\n", item.itemName,
-            item.itemQuantity, item.itemPrice,
-            item.itemQuantity * item.itemPrice);
-}
-*/
 void MakeItemBlank(Items* item)
 {
     strcpy(item->itemName, "empty");
@@ -45,7 +29,7 @@ void MakeItemBlank(Items* item)
 
 void PrintItemCost(Items item)
 {
-    printf("%s %d @ $%d = %d\n", item.itemName,
+    printf("%s %d @ $%d = $%d\n", item.itemName,
             item.itemQuantity, item.itemPrice,
             item.itemQuantity * item.itemPrice);
 }
