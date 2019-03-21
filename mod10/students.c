@@ -30,6 +30,7 @@ typedef struct Student
 
 // Function Prototypes
 void AddStudent(Student* thisStudent, char name[], int id);
+void DisplayStudent(const Student* st);
 
 // Main Function
 int main(int argc, char* argv[])
@@ -45,17 +46,35 @@ int main(int argc, char* argv[])
     name[strlen(name) - 1] = '\0';  // Eliminate EOL character
     // Save it to a Student structure
     AddStudent(&st, name, id);
-
-    printf("Hi [%s] student with id[%d]\n", st.fName, st.idNum);
+    DisplayStudent(&st);
+    
 
 
     return 0;
 }
 // Function Definitions
 
+/* 
+ * ===  FUNCTION  ======================================================================
+ *         Name:  AddStudent
+ *  Description:  Populate a student structure
+ * =====================================================================================
+ */
 void AddStudent(Student* thisStudent, char name[], int id)
 {
     strcpy(thisStudent->fName,name);
     thisStudent->idNum = id;
 }
 
+
+/* 
+ * ===  FUNCTION  ======================================================================
+ *         Name:  DisplayStudent
+ *  Description:  Display a student record
+ * =====================================================================================
+ */
+
+void DisplayStudent(const Student* st)
+{
+    printf("Hi [%s] student with id[%d]\n", st->fName, st->idNum);
+}
