@@ -67,7 +67,7 @@ void DisplayTele(Tele* content)
 {
     while(content != NULL)
     {
-    printf("%-30s\n %-20s\n", content->name, content->phoneNum);
+    printf("%-30s %-20s\n", content->name, content->phoneNum);
     content = content->nextaddr;
     }
     return;

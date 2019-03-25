@@ -50,18 +50,19 @@ int main(int argc, char* argv[])
 
     while(ans == 'y')
     {
-        // first round headRec == NULL
-        if(currentRec != NULL)
-        {
-            LinkStudent(currentRec, nextRec);
-        }
         // Allocate the memory for the new record
-        currentRec = (Student*) malloc(sizeof(Student));
-
-        if(id == 0)
+        nextRec = (Student*) malloc(sizeof(Student));
+        //save the address of the first record
+        if(currentRec == NULL)
         {
             headRec = currentRec;
         }
+        else
+        {
+            // Only link records after one iteration
+            LinkStudent(currentRec, nextRec);
+        }
+        // Capture user input
         printf("Student %d\n", id + 1);
         id = id + 1;
         printf("Enter your name:\n");
@@ -73,13 +74,14 @@ int main(int argc, char* argv[])
         printf("Do you want to enter another record? [y|n]");
         scanf("%c%c", &ans, &dummy);
         fflush(stdin);
-
+        // Save the current record before you request another
+        currentRec = nextRec;
     }
     // Display ALL student records
     currentRec = headRec;
     while(currentRec != NULL)
     {
-        // DisplayStudent();
+        // Display one record;
         DisplayStudent(currentRec);
         // Get the next record
         currentRec = currentRec->next;
@@ -98,8 +100,6 @@ int main(int argc, char* argv[])
 void AddStudent(Student* thisStudent, char name[], 
         int id, Student* newStudent)
 {
-    
-
     strcpy(thisStudent->fName,name);
     thisStudent->idNum = id;
     thisStudent->next = newStudent; // set the address of the next member
@@ -129,10 +129,6 @@ void DisplayStudent(const Student* st)
 
 void LinkStudent(Student* thisStudent, Student* newStudent)
 {
-    // Connect the records
-//    Student* tmp = NULL;            // dummy
-//    tmp = thisStudent->next;        // currently should be NULL
     thisStudent->next = newStudent; // Connect this to next record
-//    newStudent->next = tmp;         // This is the end of the list
     return;
 }
