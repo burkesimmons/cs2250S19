@@ -26,10 +26,12 @@ typedef struct ItemToPurchase_struct
     char itemName[50];
     int itemPrice;
     int itemQuantity;
+    char itemDescription[100];
 
 }Items;
 
 void MakeItemBlank(Items* item);
 void PrintItemCost(Items item);
+void PrintItemDescription(Items item);
 
 #endif
