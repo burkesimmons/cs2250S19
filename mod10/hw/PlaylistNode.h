@@ -36,6 +36,6 @@ void SetNextPlaylistNodeAfter(PlaylistNode* thisNode, PlaylistNode* newNode);
 
 PlaylistNode* GetNextPlaylistNode();
 
-void PrintlistNode();
+void PrintlistNode(PlaylistNode* thisNode);
 
 #endif /* ----- #ifndef PLAYLISTNODE__INC__ ----- */
