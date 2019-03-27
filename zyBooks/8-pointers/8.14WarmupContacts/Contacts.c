@@ -18,19 +18,40 @@
  */
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
+
 #include "Contacts.h"
 
 
-// Constants
-
-// Function Prototypes
-
-// Main Function
-int main(int argc, char* argv[])
-{
-
-    return 0;
-}
 // Function Definitions
 
+void CreateContactNode(Contact* thisCon, char dataName[], char dataPhoneNum[],  
+        Contact* nextCon) {
+    strcpy(thisCon->contactName, dataName);
+    strcpy(thisCon->contactPhoneNum, dataPhoneNum);
+    thisCon->nextNodePtr = nextCon; // set the address of the next contact
+}
+
+/* Insert newCon after node.
+ * Before: thisCon -- next
+ * After: thisCon -- newNode --next
+ * */
+void InsertContactAfter(Contact* thisCon, Contact* newCon) {
+    Contact* tmpNext = NULL;
+
+    tmpNext = thisCon->nextNodePtr; // Rember next
+    thisCon->nextNodePtr = newCon; // this -- new -- ?
+    newCon->nextNodePtr = tmpNext; // this -- new --next
+}
+
+// Print dataName & dataPhoneNum
+void PrintContactNode(Contact* thisCon) {
+    printf("Name: %s\n", thisCon->contactName);
+    printf("Phone number: %s\n\n", thisCon->contactPhoneNum);
+}
+
+// Grab location pointed by nextNodePtr
+Contact* GetNextContact(Contact* thisCon) {
+    return thisCon->nextNodePtr;
+}
 

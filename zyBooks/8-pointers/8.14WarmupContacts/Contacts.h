@@ -25,5 +25,13 @@ typedef struct ContactNode
     struct ContactNode* nextNodePtr;
 }Contact;
 
+// Function Prototypes
+void CreateContactNode(Contact* thisCon, char dataName[], char dataPhoneNum[],  
+        Contact* nextCon);
+void InsertContactAfter(Contact* thisCon, Contact* newCon);
+void PrintContactNode(Contact* thisCon);
+Contact* GetNextContact(Contact* thisCon);
+
+
 #endif /* ----- #ifndef CONTACTS__INC__ ----- */
 

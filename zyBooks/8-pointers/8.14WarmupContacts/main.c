@@ -24,64 +24,54 @@
 
 // Constants
 #define MAX 50
-// Function Prototypes
-void CreateContactNode(Contact* thisCon, char dataName[], char dataPhoneNum[],  
-        Contact* nextCon) {
-    strcpy(thisCon->contactName, dataName);
-    strcpy(thisCon->contactPhoneNum, dataPhoneNum);
-    thisCon->nextNodePtr = nextCon; // set the address of the next contact
-}
-
-/* Insert newCon after node.
- * Before: thisCon -- next
- * After: thisCon -- newNode --next
- * */
-void InsertContactAfter(Contact* thisCon, Contact* newCon) {
-    Contact* tmpNext = NULL;
-
-    tmpNext = thisCon->nextNodePtr; // Rember next
-    thisCon->nextNodePtr = newCon; // this -- new -- ?
-    newCon->nextNodePtr = tmpNext; // this -- new --next
-}
-
-// Print dataName & dataPhoneNum
-void PrintContactNode(Contact* thisCon) {
-    printf("Name: %s\n", thisCon->contactName);
-    printf("Phone number: %s\n\n", thisCon->contactPhoneNum);
-}
-
-// Grab location pointed by nextNodePtr
-Contact* GetNextContact(Contact* thisCon) {
-    return thisCon->nextNodePtr;
-}
 
 // Main Function
 int main(int argc, char* argv[])
 {
-//    char dummy;
+
     char dataName[MAX];
     char dataPhoneNum[MAX];
-    // Contact st;
-    Contact *headCon = NULL;  // Create Contact objects
-    Contact *currCon = NULL;
-    Contact *lastCon = NULL;
+ 
+    Contact* headCon = NULL;  // Create pointer to Contact
+    Contact* currCon = NULL;
+    Contact* lastCon = NULL;
     int i;  // Loop index
 
-//    headCon = (Contact*)malloc(sizeof(Contact)); // Front of nodes list
+    headCon = (Contact*)malloc(sizeof(Contact)); // Front of nodes list
     CreateContactNode(headCon, "", "", NULL);
     lastCon = headCon;
 
     for (i = 0; i < 3; i++) {  // Ask for and fgets 3 Contacts
-//        currCon = (Contact*)malloc(sizeof(Contact));
+        currCon = (Contact*)malloc(sizeof(Contact));
+//        if(lastCon == NULL)
+//        {
+//            headCon = lastCon;
+//        }
+//        else
+//        {
+//             Only link records after on iteration
+//            InsertContactAfter(lastCon, currCon);  // Append curr
+//        }
+        // Capture user input
+        printf("Person %d\n", i +1);
+        printf("Enter name:\n");
+        fgets(dataName, MAX, stdin);
+        dataName[strlen(dataName) - 1] = '\0'; // Eliminate EOL character
+        printf("Enter phone number:\n");
+        fgets(dataPhoneNum, MAX, stdin);
+        dataPhoneNum[strlen(dataPhoneNum) - 1] = '\0';
+        //Save it to a Contact structure
         CreateContactNode(currCon, dataName, dataPhoneNum, NULL);
 
         InsertContactAfter(lastCon, currCon);  // Append curr
+        //Print entered contact structure
+        printf("You entered: %s, %s\n\n", currCon->contactName, currCon->contactPhoneNum);
         lastCon = currCon;
     }
-
+    printf("\n");
     currCon = headCon;      // Print the list
 
-    printf("CONTACT LIST");
+    printf("CONTACT LIST\n");
 
     while (currCon  != NULL) {
         PrintContactNode(currCon);
