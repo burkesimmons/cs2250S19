@@ -37,11 +37,11 @@ void CreateContactNode(Contact* thisCon, char dataName[], char dataPhoneNum[],
  * After: thisCon -- newNode --next
  * */
 void InsertContactAfter(Contact* thisCon, Contact* newCon) {
-    Contact* tmpNext = NULL;
+//    Contact* tmpNext = NULL;
 
-    tmpNext = thisCon->nextNodePtr; // Rember next
+//    tmpNext = thisCon->nextNodePtr; // Rember next
     thisCon->nextNodePtr = newCon; // this -- new -- ?
-    newCon->nextNodePtr = tmpNext; // this -- new --next
+//    newCon->nextNodePtr = tmpNext; // this -- new --next
 }
 
 // Print dataName & dataPhoneNum
