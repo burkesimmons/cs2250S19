@@ -55,7 +55,7 @@ int main(int argc, char* argv[])
         //save the address of the first record
         if(currentRec == NULL)
         {
-            headRec = currentRec;
+            headRec = nextRec;
         }
         else
         {
@@ -69,7 +69,7 @@ int main(int argc, char* argv[])
         fgets(name, MAX, stdin);
         name[strlen(name) - 1] = '\0';  // Eliminate EOL character
         // Save it to a Student structure
-        AddStudent(headRec, name, id, NULL);
+        AddStudent(nextRec, name, id, NULL);
         //Do you want to enter another record [y|n]
         printf("Do you want to enter another record? [y|n]");
         scanf("%c%c", &ans, &dummy);

@@ -18,7 +18,7 @@
 #define  PLAYLISTNODE__INC__
 
 #define MAX 50
-typdef struct PlaylistNode_struct
+typedef struct PlaylistNode_struct
 {
     char uniqueID[MAX];
     char songName [MAX];
@@ -27,15 +27,17 @@ typdef struct PlaylistNode_struct
     struct PlaylistNode_struct* nextNodePtr; // address of next member. NULL for last member
 }PlaylistNode;
 
-void CreatPlaylistNode(PlaylistNode* thisNode, char idInit[], 
+void CreatePlaylistNode(PlaylistNode* thisNode, char idInit[], 
         char songNameInit[], char artistNameInit[],
         int songLengthInit, PlaylistNode* nextLoc);
 void InsertPlaylistNodeAfter(PlaylistNode* thisNode, PlaylistNode* newNode);
 void SetNextPlaylistNodeAfter(PlaylistNode* thisNode, PlaylistNode* newNode);
+void AddSong();
+void PrintMenu(char playlistTitle[]);
 
 
 PlaylistNode* GetNextPlaylistNode();
 
-void PrintlistNode(PlaylistNode* thisNode);
+void PrintlistNode(char playListName[]);
 
 #endif /* ----- #ifndef PLAYLISTNODE__INC__ ----- */
