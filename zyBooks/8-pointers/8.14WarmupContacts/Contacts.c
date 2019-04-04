@@ -26,10 +26,10 @@
 // Function Definitions
 
 void CreateContactNode(Contact* thisCon, char dataName[], char dataPhoneNum[],  
-        Contact* nextCon) {
+        Contact* newCon) {
     strcpy(thisCon->contactName, dataName);
     strcpy(thisCon->contactPhoneNum, dataPhoneNum);
-    thisCon->nextNodePtr = nextCon; // set the address of the next contact
+    thisCon->nextNodePtr = newCon; // set the address of the next contact
 }
 
 /* Insert newCon after node.
@@ -37,11 +37,12 @@ void CreateContactNode(Contact* thisCon, char dataName[], char dataPhoneNum[],
  * After: thisCon -- newNode --next
  * */
 void InsertContactAfter(Contact* thisCon, Contact* newCon) {
-//    Contact* tmpNext = NULL;
+    Contact* tmpNext = NULL;
 
-//    tmpNext = thisCon->nextNodePtr; // Rember next
+    tmpNext = thisCon->nextNodePtr; // Rember next
     thisCon->nextNodePtr = newCon; // this -- new -- ?
-//    newCon->nextNodePtr = tmpNext; // this -- new --next
+    newCon->nextNodePtr = tmpNext; // this -- new --next
+    return;
 }
 
 // Print dataName & dataPhoneNum

@@ -31,51 +31,49 @@ int main(int argc, char* argv[])
 
     char dataName[MAX];
     char dataPhoneNum[MAX];
- 
+//    char dummy;
     Contact* headCon = NULL;  // Create pointer to Contact
     Contact* currCon = NULL;
-    Contact* lastCon = NULL;
+    Contact* nextCon = NULL;
     int i;  // Loop index
 
-//    headCon = (Contact*)malloc(sizeof(Contact)); // Front of nodes list
-//    CreateContactNode(headCon, "", "", NULL);
-//    lastCon = headCon;
-
     for (i = 0; i < 3; i++) {  // Ask for and fgets 3 Contacts
-        currCon = (Contact*)malloc(sizeof(Contact));
-        if(lastCon == NULL)
+        nextCon = (Contact*)malloc(sizeof(Contact));
+        if(currCon == NULL)
         {
-            headCon = lastCon;
+            headCon = nextCon;
         }
         else
         {
              // Only link records after on iteration
-            InsertContactAfter(lastCon, currCon);  // Append curr
+            InsertContactAfter(currCon, nextCon);  // Append curr
         }
         // Capture user input
         printf("Person %d\n", i +1);
         printf("Enter name:\n");
         fgets(dataName, MAX, stdin);
         dataName[strlen(dataName) - 1] = '\0'; // Eliminate EOL character
-        printf("Enter phone number:\n");
+        printf("Enter phone number:\n\n");
         fgets(dataPhoneNum, MAX, stdin);
         dataPhoneNum[strlen(dataPhoneNum) - 1] = '\0';
         //Save it to a Contact structure
-        CreateContactNode(currCon, dataName, dataPhoneNum, NULL);
+        CreateContactNode(nextCon, dataName, dataPhoneNum, NULL);
 
-//        InsertContactAfter(lastCon, currCon);  // Append curr
         //Print entered contact structure
-        printf("You entered: %s, %s\n\n", currCon->contactName, currCon->contactPhoneNum);
-        lastCon = currCon;
+        printf("You entered: %s, %s\n", nextCon->contactName, nextCon->contactPhoneNum);
+//        fflush(stdin);
+        // Save the current record before you request another 
+        currCon = nextCon;
+//        scanf("%c", &dummy);
     }
     printf("\n");
-    lastCon = headCon;      // Print the list
+    currCon = headCon;      // Print the list
 
     printf("CONTACT LIST\n");
 
-    while (lastCon  != NULL) {
+    while (currCon  != NULL) {
         PrintContactNode(currCon);
-        lastCon = GetNextContact(lastCon);
+        currCon = GetNextContact(currCon);
     }
     return 0;
 }
