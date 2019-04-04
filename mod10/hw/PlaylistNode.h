@@ -31,13 +31,13 @@ void CreatePlaylistNode(PlaylistNode* thisNode, char idInit[],
         char songNameInit[], char artistNameInit[],
         int songLengthInit, PlaylistNode* nextLoc);
 void InsertPlaylistNodeAfter(PlaylistNode* thisNode, PlaylistNode* newNode);
-void SetNextPlaylistNodeAfter(PlaylistNode* thisNode, PlaylistNode* newNode);
+void SetNextPlaylistNode(PlaylistNode* thisNode, PlaylistNode* newNode);
 void AddSong();
 void PrintMenu(char playlistTitle[]);
 
 
 PlaylistNode* GetNextPlaylistNode();
 
-void PrintlistNode(char playListName[]);
+void PrintlistNode(PlaylistNode* thisNode);
 
 #endif /* ----- #ifndef PLAYLISTNODE__INC__ ----- */

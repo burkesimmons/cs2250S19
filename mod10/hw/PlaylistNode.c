@@ -24,6 +24,13 @@
     PlaylistNode* currNode = NULL;
     PlaylistNode* nextNode = NULL;
     char dummy = ' ';
+    char temp[50] = "";
+    char artistName[50] = "";
+    int numNodes = 0;
+    int totalTime = 0;
+    char uniqueID[50] = "";
+    PlaylistNode* songNode = NULL;
+    PlaylistNode* prevNode = NULL;
 
     /*!
      *  Name:  PrintMenu
@@ -35,11 +42,10 @@
 void PrintMenu(char playlistTitle[])
 {
     // Create a bunch of temporary variables: chars, ints, and PlaylistNodes(6-8 pointers)
-    printf("Beggining of printmenu, or popped out of switch case");
     char menuOp = ' ';
     // Output menu option 
     // Create a loop to print your options
-    printf("%s PLAYLIST MENU\n", playlistTitle);
+    printf("\n%s PLAYLIST MENU\n", playlistTitle);
     printf("a - Add song\n");
     printf("r - Remove song\n");
     printf("c - Change position of song\n");
@@ -66,7 +72,81 @@ void PrintMenu(char playlistTitle[])
                     break;
                     // case 'r'; Output the playlist message
                 case 'r':
-                    printf("You chose 'r'");
+                    // Output playlist messaging
+                    printf("REMOVE SONG\n");
+                    printf("Enter song's unique ID:\n");
+                    scanf("%s", uniqueID);
+                    printf("uniqueID entered: %s\n", uniqueID);
+  
+/*          Tried this, problem with "tempNext not set"
+                    currNode = headNode;
+                    if(currNode == NULL)
+                    {
+                    }
+
+                    if(strcmp(currNode->uniqueID, uniqueID) == 0)
+                    {
+                        PlaylistNode* tempNext = NULL;
+                        tempNext = currNode->nextNodePtr;
+                        free(currNode);
+                    }
+*/
+/*          This one caused a segment fault dump
+                    currNode = headNode;
+                    while(currNode != NULL)
+                    {
+                        if(strcmp(currNode->uniqueID, uniqueID) == 0)
+                        {
+                            PlaylistNode* tempNext;
+                            // 1) set temp to thisNode->nextNodePtr
+                            tempNext = currNode->nextNodePtr;
+                            // 2) update thisNode->nextNodePtr to newNode
+                            currNode->nextNodePtr = tempNext->nextNodePtr;
+//                            free(tempNext);
+                            printf("\"%s\" removed.\n\n", currNode->songName);
+
+
+                        }
+                        else
+                        {
+                    currNode = GetNextPlaylistNode(currNode);
+                        }
+                    }
+*/
+
+/*              This is 2018 spring class help, I couldn't figure it out
+                // Count number of nodes in list
+                songNode = headNode;
+
+                // songNode is the song to be deleted
+                
+
+                if (songNode == NULL) 
+                {
+                    // ERROR: uniqueID provided by user is invalid
+                    // Do nothing
+                    return;
+                }
+                else
+                {i
+                    // Remove song at songPosition from list
+
+                    // If songPosition is 1, list head is removed
+                    if (songNode == headNode) 
+                    {
+                        headNode = GetNextPlaylistNode(songNode);
+                    }
+                    else 
+                    {
+                        // prevNode refers to node before the songNode
+                        // .....
+                        
+                        // prevNode updated so next is the node following songNode
+                        // .....
+
+                    } // end of else
+                } // end of else
+*/
                     break;
                     // case 'c'; Prompt user for new song location
                 case 'c':
@@ -74,15 +154,58 @@ void PrintMenu(char playlistTitle[])
                     break;
                     // case 's'; Output songs by specific artist
                 case 's':
-                    printf("You chose 's'");
+                    // Consume newline and prompt user for output criteria
+                    fgets(temp, 50, stdin);
+
+                    printf("OUTPUT SONGS BY SPECIFIC ARTIST\n");
+                    printf("Enter artist's name:\n");
+                    fgets(artistName, 50, stdin);
+                    artistName[strlen(artistName)-1] = '\0';
+
+                    numNodes = 1;
+                    // Search list for matching artists
+                    currNode = headNode;
+                    while ( currNode != NULL)
+                    {
+                        if(strcmp(currNode->artistName, artistName) == 0)
+                        {
+                            printf("%d.\n", numNodes);
+                            printf("Unique ID: %s\n", currNode->uniqueID);
+                            printf("Song Name: %s\n", currNode->songName);
+                            printf("Artist Name: %s\n", currNode->artistName);
+                            printf("Song Length (in seconds): %d\n", currNode->songLength);
+                                            currNode = GetNextPlaylistNode(currNode);
+                            printf("\n");
+                        }
+                            ++numNodes;
+                    }
                     break;
                     // case 't'; Output the total time of songs in seconds
                 case 't':
-                    printf("You chose 't'");
+                    currNode = headNode;
+                    while ( currNode != NULL)
+                    {
+                        totalTime = totalTime + currNode->songLength;
+                        currNode = GetNextPlaylistNode(currNode);
+                    }
+                    printf("OUTPUT TOTAL TIME OF PLAYLIST (IN SECONDS)\n");
+                    printf("Total time: %d seconds\n\n", totalTime);
+
                     break;
                     // case 'o'; Output full play list
                 case 'o':
-                    PrintlistNode(playlistTitle);
+                    // Print song info
+                    printf("%s - OUTPUT FULL PLAYLIST\n", playlistTitle);
+                    numNodes = 1;
+                    currNode = headNode;
+                    if(headNode == NULL)
+                    {
+                        printf("Playlist is empty\n\n");
+                    }
+                    else
+                    {
+                        PrintlistNode(currNode);
+                    }
                     break;
                     // case 'q'; Quit, which is the exit of your loop
             }// end of switch
@@ -129,15 +252,8 @@ void AddSong()
     int songTime;
     char dummy;
 
+    
     nextNode = (PlaylistNode*)malloc(sizeof(PlaylistNode));
-    if(currNode == NULL)
-    {
-        headNode = nextNode;
-    }
-    else
-    {
-        InsertPlaylistNodeAfter(currNode, nextNode);
-    }
     //Capture song information
 //    scanf("%c\n", &dummy);
     printf("Enter song's unique ID\n");
@@ -155,6 +271,16 @@ void AddSong()
     scanf("%d", &songTime);
     scanf("%c", &dummy);
     CreatePlaylistNode(nextNode, idData, songData, artistData, songTime, NULL);
+    
+    if(currNode == NULL)   // first entry
+    {
+        headNode = nextNode;
+    }
+    else // second or more entries
+    {
+        InsertPlaylistNodeAfter(currNode, nextNode);
+    }
+    //Save for next round
     currNode = nextNode;
 
 //    printf("finish add song\n");
@@ -209,7 +335,7 @@ void InsertPlaylistNodeAfter(PlaylistNode* thisNode, PlaylistNode* newNode)
  *  Description:  Linking your PlaylistNodes
  * =====================================================================================
  */
-void SetNextPlaylistNodeAfter(PlaylistNode* thisNode, PlaylistNode* newNode)
+void SetNextPlaylistNode(PlaylistNode* thisNode, PlaylistNode* newNode)
 {
     // 1) Set the thisNode->nextNodePtr to newNode
     thisNode->nextNodePtr = newNode;
@@ -237,20 +363,21 @@ PlaylistNode* GetNextPlaylistNode(PlaylistNode* thisNode)
  *  Description:  Print the list node description
  * =====================================================================================
  */
-void PrintlistNode(char playListName[])
+void PrintlistNode(PlaylistNode* currNode)
 {
-    // Print song info
-    currNode = headNode;
-    printf("%s - OUTPUT FULL PLAYLIST\n", playListName);
     while ( currNode != NULL)
     {
     // 1) Print each member of the PlaylistNode
+    printf("%d.\n", numNodes);
     printf("Unique ID: %s\n", currNode->uniqueID);
     printf("Song Name: %s\n", currNode->songName);
     printf("Artist Name: %s\n", currNode->artistName);
     printf("Song Length (in seconds): %d\n", currNode->songLength);
-        currNode = GetNextPlaylistNode(currNode);
+                    currNode = GetNextPlaylistNode(currNode);
+    printf("\n");
+    ++numNodes;
     }
     return;
 }
+
 
