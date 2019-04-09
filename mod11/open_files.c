@@ -3,7 +3,7 @@
  *
  *       Filename:  open_files.c
  *
- *    Description:  
+ *    Description:  Opening a file for creation and edit
  *
  *        Version:  1.0
  *        Created:  03/28/2019 08:40:47 AM

@@ -3,7 +3,7 @@
  *
  *       Filename:  write_bin.c
  *
- *    Description:  
+ *    Description:  Write to a file in binary mode
  *
  *        Version:  1.0
  *        Created:  03/28/2019 08:54:54 AM
