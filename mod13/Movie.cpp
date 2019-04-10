@@ -23,16 +23,11 @@
 using namespace std;
 
 // Default constructor
-Movie::Movie()
-{
-    title ="Nada";
-    year = 1888;
-}
-
-Movie::Movie(string title, int year)
+Movie::Movie(string title, int year, int stars)
 {
     set_title(title);
     set_year(year);
+    set_stars(stars);
 }
 
 // Destructor
@@ -41,20 +36,17 @@ Movie::~Movie()
     cout << "Destroying Object" << endl;
 }
 
-Movie::Movie(string title)
-{
-    set_title(title);
-    set_year(year = 1888);
-}
 // Printinfo
 void Movie::info() const
 {
     int w = 10;
     cout << left
         << setw(w*3) << "TITLE"
-        << setw(w) << "YEAR" << endl;
+        << setw(w) << "YEAR" 
+        << setw(w) << "STARS" << endl;
     cout << setw(w*3) << get_title()
-        << setw(w) << get_year() << endl;
+        << setw(w) << get_year() 
+        << setw(w) << get_stars() << endl;
 }
 // Function Definitions
 void Movie::set_title(string set_title)
@@ -74,6 +66,12 @@ void Movie::set_year(int year)
     this->year = year;
 }
 
+void Movie::set_stars(int stars)
+{
+    // this-> refers to yourself
+    // required because of the same name
+    this->stars = stars;
+}
 // Define Getters
 string Movie::get_title() const
 {
@@ -83,4 +81,9 @@ string Movie::get_title() const
 int Movie::get_year() const
 {
     return year;
+}
+
+int Movie::get_stars() const
+{
+    return stars;
 }

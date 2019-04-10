@@ -36,6 +36,10 @@ void Movie::set_year(int set_year)
     // required because of the same name
     this->year = year;
 }
+void Movie::set_stars(int set_stars)
+{
+    stars = set_stars;
+}
 
 // Define Getters
 string Movie::get_title()

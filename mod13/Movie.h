@@ -28,21 +28,21 @@ class Movie
     private:
         string title;
         int year;
+        int stars;
     // Anyone has access to it
     public:
         // Constructors
-        Movie();  // default
-        // Another constructor
-        Movie(string title, int year);
-        Movie(string title);
+        Movie(string title = "", int year = 1888, int stars = 0);
         // Destructor
         ~Movie();
         // "Setters"
         void set_title(string set_title);
         void set_year(int year);
+        void set_stars(int stars);
         // "Getters"
         string get_title() const;
         int get_year() const;
+        int get_stars() const;
         void info() const;
 
 }; // end of Movie class
