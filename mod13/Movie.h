@@ -29,7 +29,9 @@ class Movie
         string title;
         int year;
         int stars;
-    // Anyone has access to it
+
+        string to_upper(string);
+        // Anyone has access to it
     public:
         // Constructors
         Movie(string title = "", int year = 1888, int stars = 0);
@@ -44,6 +46,7 @@ class Movie
         int get_year() const;
         int get_stars() const;
         void info() const;
+        bool iequals(const Movie&);
 
 }; // end of Movie class
 
