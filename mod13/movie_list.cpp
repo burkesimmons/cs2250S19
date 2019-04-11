@@ -73,11 +73,19 @@ vector<Movie> read_movies_from_file()
         {
             stringstream ss(line);  // read the line and cast it as string
             // Now ready to parse the line
-            string title;
+            string title, temp;
             int year, stars;
-            getline(ss, title, ','); //  read title until you get a tab \t
-            ss >> year >> stars;  // get year and stars
+            getline(ss, title, ','); //  read title until you get a comma
+
+            getline(ss, temp, ','); // read title until you get a ','
+            year = stoi(temp); // convert string to integer
+
+            getline(ss, temp, ','); // read title until you get a ','
+            stars = stoi(temp); // convert string to integer
+
+//            ss >> year >> stars;  // get year and stars
 //            cout << title << " " << year << " " << stars << endl; //TODO Debug
+//
 //            Create and add movie object to vector
             movies.push_back(Movie(title, year, stars));
         } // end of loop over file
