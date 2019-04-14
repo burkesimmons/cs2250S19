@@ -16,39 +16,53 @@
  */
 // For C++ Code
 #include <iostream>
-#include <iomanip>
+#include <iomanip> // more cout options
+#include <string> // for strings
+#include <vector> // for vectors "arrays with lots of features"
 #include "Movie.h"
 using namespace std;
 
-// Function Definitions
-void Movie::set_title(string set_title)
+// Main Function
+int main(int argc, char* argv[])
 {
-    // this-> title = set_title; // optional
-    title = set_title;
-}
-void Movie::set_year(int set_year)
-{
-    if (set_year < 1888)
+    cout << "The movie list Program" << endl << endl
+        << "Enter a movie ..." << endl << endl;
+    // Get movies from user
+//    Movie movies[10];  // an array of 10 movies. Fixed to 10 spots
+    vector<Movie> movies;  // define a vector of movies. Grow on demand
+    char another = 'y';
+    // Loop for entries
+    while(tolower(another) == 'y')
     {
-        throw invalid_argument("Year must be 1888 or later.");
+        Movie movie;
+        string title;
+        int year;
+        // Get user input
+        cout << "Title: ";   // get title
+        getline(cin, title);
+        movie.set_title(title);
+        cout << "Year: ";   // get year
+        cin >> year;
+        movie.set_year(year);
+        // Add it to the vector
+        movies.push_back(movie);
+
+        cout << endl << "Enter another movie? (y|n): ";
+        cin >> another;
+        cin.ignore();  // ignore anything else in the buffer
+        cout << endl;
+    }// end of while loop
+    // Display movies
+    const int w = 10;
+    cout << left
+        << setw(w*3) << "TITLE"
+        << setw(w) << "YEAR" << endl;
+    for(Movie movie : movies)  // looping over vector
+    {
+        cout << setw(w*3) << movie.get_title()
+            << setw(w) << movie.get_year() << endl;
     }
-    // this-> refers to yourself
-    // required because of the same name
-    this->year = year;
-}
-void Movie::set_stars(int set_stars)
-{
-    stars = set_stars;
-}
+    cout << endl;
 
-// Define Getters
-string Movie::get_title()
-{
-    return title;
+    return 0;
 }
-
-int Movie::get_year()
-{
-    return year;
-}
- *   Compiler (C):  gcc Movie.cpp -o Movie.out
