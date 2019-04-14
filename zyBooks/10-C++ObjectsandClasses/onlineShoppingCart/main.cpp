@@ -21,7 +21,6 @@
 #include <iostream>
 #include <iomanip>
 #include "ShoppingCart.h"
-//#include "ItemToPurchase.h"
 using namespace std;
 
 // Function prototypes

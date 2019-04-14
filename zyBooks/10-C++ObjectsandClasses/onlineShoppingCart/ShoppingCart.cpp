@@ -80,6 +80,10 @@ string ShoppingCart::GetDate() cust
  *  Description:  Add item object to cartItems vector
  * =====================================================================================
  */
+void AddItem(ItemToPurchase item)
+{
+    
+}
 
 
 
@@ -155,6 +159,10 @@ void ShoppingCart::ModifyItem(ItemToPurchase item) {
  *  Description:  Return the number of items in the cart
  * =====================================================================================
  */
+int GetNumItemsInCart()
+{
+    
+}
 
 
 /* 

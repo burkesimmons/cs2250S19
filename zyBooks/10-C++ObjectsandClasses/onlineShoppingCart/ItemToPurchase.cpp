@@ -33,8 +33,11 @@ using namespace std;
 ItemToPurchase::ItemToPurchase()
 {
     itemName = "none";
+    itemDescription = "none";
     itemPrice = 0;
     itemQuantity = 0;
+
+    return;
 }
 
 
