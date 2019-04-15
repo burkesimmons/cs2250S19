@@ -70,6 +70,17 @@ void ItemToPurchase::SetName(string itemName)
 }
 
 
+/* 
+ * ===  FUNCTION  ======================================================================
+ *         Name:  SetDescription
+ *  Description:  Set the description variable
+ * =====================================================================================
+ */
+void ItemToPurchase::SetDescription(string itemDescription)
+{
+    this->itemDescription = itemDescription;
+}
+
 
 /* 
  * ===  FUNCTION  ======================================================================
@@ -108,6 +119,17 @@ string ItemToPurchase::GetName() const
     return itemName;
 }
 
+
+/* 
+ * ===  FUNCTION  ======================================================================
+ *         Name:  GetName
+ *  Description:  Get the name variable
+ * =====================================================================================
+ */
+string ItemToPurchase::GetDescription() const
+{
+    return itemDescription;
+}
 
 
 /* 

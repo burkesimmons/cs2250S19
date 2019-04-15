@@ -18,6 +18,7 @@
  */
 // Function Defenitions
 #include <iostream>
+#include <vector>
 using namespace std;
 
 #include "ShoppingCart.h"
@@ -40,7 +41,7 @@ ShoppingCart::ShoppingCart()
  *  Description:  Constructor with name and date parameters
  * =====================================================================================
  */
-ShoppingCart::ShoppingCart(string name, int date)
+ShoppingCart::ShoppingCart(string name, string date)
 {
     customerName = name;
     currentDate = date;
@@ -55,7 +56,7 @@ ShoppingCart::ShoppingCart(string name, int date)
  *  Description:  Return customer name
  * =====================================================================================
  */
-string ShoppingCart::GetCustomerName() cust
+string ShoppingCart::GetCustomerName() const
 {
     return customerName;
 }
@@ -67,7 +68,7 @@ string ShoppingCart::GetCustomerName() cust
  *  Description:  Return currentDate
  * =====================================================================================
  */
-string ShoppingCart::GetDate() cust
+string ShoppingCart::GetDate() const
 {
     return currentDate;
 }
@@ -80,9 +81,10 @@ string ShoppingCart::GetDate() cust
  *  Description:  Add item object to cartItems vector
  * =====================================================================================
  */
-void AddItem(ItemToPurchase item)
+void ShoppingCart::AddItem(ItemToPurchase item)
 {
-    
+
+    cartItems.push_back(item);
 }
 
 
@@ -106,8 +108,16 @@ void ShoppingCart::RemoveItem(string name)
     found = false;
 
     // Loop over vector to search for name
-    for(i = 0; i < cartSize; ++i) 
+    for(i = 0; i < cartSize; i++) 
     {
+        if(cartItems.at(i).GetName().compare(name) == 0)
+        {
+            posItem = i;
+//            cout << "Name compared is:" << cartItems.at(i).GetName() << endl;
+            cartItems.erase(cartItems.begin() + posItem);
+            found = true;
+        }
+        
         // Hint: to access a vector item by index use: "at(i)" method
         // For example to get the name, use: cartItems.at(i).GetName()
     }
@@ -116,13 +126,13 @@ void ShoppingCart::RemoveItem(string name)
     {
         cout << "Item not found in cart. Nothing removed." << endl;
     }
-    // Shrink vector
+//     Shrink vector
     cartItems.resize(cartSize - 1);
 }
 
 
 /* 
- * ===  FUNCTION  ======================================================================
+ * ===  FUNCTION  =====================================================================
  *         Name:  ModifyItem
  *  Description:  Modify existing item. 
  * =====================================================================================
@@ -138,11 +148,20 @@ void ShoppingCart::ModifyItem(ItemToPurchase item) {
     {
         if(cartItems.at(i).GetName() == item.GetName()) 
         {
-            // Check if it is name is not "none"
-
+            // Check if it is description is not "none"
+//            if(cartItems.at(i).GetDescription() != item.GetDescription())
+//            {
+//                item.SetDescription(description);
+//            }
             // Check if it is price is not 0
 
             // Check if it is qty is not 0
+            if(cartItems.at(i).GetQuantity() != 0)
+            {
+                cartItems.at(i).SetQuantity(item.GetQuantity());
+                found = true;
+                return;
+            }
         }
     }
 
@@ -159,10 +178,17 @@ void ShoppingCart::ModifyItem(ItemToPurchase item) {
  *  Description:  Return the number of items in the cart
  * =====================================================================================
  */
-int GetNumItemsInCart()
+int ShoppingCart::GetNumItemsInCart()
 {
-    
-}
+//    if(cartItems.size() == 0)
+//    {
+//        return 0;
+//    }
+//    else
+//    {
+    return cartItems.size();
+    }
+//}
 
 
 /* 
@@ -174,13 +200,14 @@ int GetNumItemsInCart()
  */
 double ShoppingCart::GetCostOfCart() 
 {
-   int i = 0;
+   unsigned int i = 0;
    int totalCost;
    
    totalCost = 0;
    
    for(i = 0; i < cartItems.size(); ++i) 
    {
+       totalCost = totalCost + (cartItems.at(i).GetPrice() * cartItems.at(i).GetQuantity());
        // your logic here
    }
    
