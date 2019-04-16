@@ -39,6 +39,10 @@ void List::createnode(int value)
 }
 
 
+/*!
+ *  Name:  display
+ *  \brief  Display linked list
+ */
 void List::display()
 {
     node *temp = new node;
@@ -168,13 +172,14 @@ void List::delete_position(int pos)
     }
     // Loop over nodes
     current = head; // point at head
-    for(int i = 0; i < pos; i++)
+    for(int i = 1; i < pos; i++)
     {
         prev = current;
         current = current->next;
     }
     // Set new addresses
     prev->next = current->next;
+
     delete current;
     return;
 }
