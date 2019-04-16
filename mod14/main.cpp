@@ -29,7 +29,7 @@ int main(int argc, char* argv[])
 {
     List obj;
     obj.createnode(25);
-    obj.createnode(50);
+    obj.createnode(99);
     obj.createnode(90);
     obj.createnode(40);
     cout<<"\n--------------------------------------------------\n";
@@ -61,12 +61,12 @@ int main(int argc, char* argv[])
     cout<<"\n--------------------------------------------------\n";
     obj.delete_last();
     obj.display();
-    cout<<"\n--------------------------------------------------\n";
-    cout<<"--------------Deleting At Particular--------------";
-    cout<<"\n--------------------------------------------------\n";
-    obj.delete_position(4);
-    obj.display();
-    cout<<"\n--------------------------------------------------\n";
-    system("pause");
+//    cout<<"\n--------------------------------------------------\n";
+//    cout<<"--------------Deleting At Particular--------------";
+//    cout<<"\n--------------------------------------------------\n";
+//    obj.delete_position(4);
+//    obj.display();
+//    cout<<"\n--------------------------------------------------\n";
+//    system("pause");
     return 0;
 }
