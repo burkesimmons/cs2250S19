@@ -52,7 +52,7 @@ int main()
     // Output menu option, prompt users for valid selection
     while(menuOp != 'q') 
     {
-        menuOp = ' ';
+        menuOp = ' '; // reset menuOp
         // Output play list menu options
         PrintMenu(playlistTitle);
         while (menuOp != 'a' && menuOp != 'd' && menuOp != 'c' &&
@@ -130,12 +130,21 @@ void AddSong(PlaylistNode*& headNode, PlaylistNode*& tailNode)
     cin >> songLength;
 
     // Create a new node for playlist with "new" and save it in newSong pointer
-    // ...
+    newSong = new PlaylistNode(uniqueID, songName,artistName, songLength);
+
 
     // If song is first in playlist, update head/tail
-    // ....
-    // Otherwise insert to end of playlist and update tail
-    // ....
+    if(headNode == 0) // first node
+    {
+        headNode = newSong;
+        tailNode = newSong;
+        newSong = 0;
+    }
+    else // Otherwise insert to end of playlist and update tail
+    {
+        tailNode->SetNext(newSong);
+        tailNode = newSong;
+    }
     cout << endl;
     return;
 }
@@ -310,7 +319,7 @@ void OutputFullList(const string playlistTitle, PlaylistNode*& headNode)
 
     // Iterate through each song in list
     int numNodes = 1;
-    currPrintNode = headNode;
+    currPrintNode = headNode; // set to first member
 
     // If list is empty, output error message
     if (headNode == 0) 
@@ -322,14 +331,14 @@ void OutputFullList(const string playlistTitle, PlaylistNode*& headNode)
     {
         while (currPrintNode != 0) 
         {
-//            cout << numNodes << "." << endl;
+            cout << numNodes << "." << endl;
 
             // cycle through the playlist
-            // ...
-
+            currPrintNode->PrintPlaylistNode();
+            currPrintNode = currPrintNode->GetNext(); // update to next member
     
-//            cout << endl;
-//            ++numNodes;
+            cout << endl;
+            ++numNodes;
         }
     }
     return;
