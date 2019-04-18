@@ -19,6 +19,7 @@
  */
 // For C++ Code
 #include <iostream>
+#include "ContactNode.h"
 using namespace std;
 
 
@@ -29,7 +30,23 @@ using namespace std;
 // Main Function
 int main(int argc, char* argv[])
 {
+    string name;
+    string number;
 
+    cout << "CONTACT LIST" << endl;
+
+    for(int i = 0; i < 3; i++)
+    {
+    cout << "Person " << i + 1 << endl;
+    cout << "Enter name:" << endl;
+    getline(cin, name);
+    cout << "Enter phone number:" << endl;
+    getline(cin, number);
+    ContactNode contact(name, number);
+    cout << "You entered: " << contact.GetName() << ", "
+        << contact.GetPhoneNumber() << endl;
+
+    }
     return 0;
 }
 // Function Definitions

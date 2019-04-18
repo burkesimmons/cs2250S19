@@ -3,7 +3,7 @@
  *
  *       Filename:  ContactNode.h
  *
- *    Description:  Contacts library
+ *    Description:  ContactNode
  *
  *        Version:  1.0
  *        Created:  04/15/2019 03:46:41 PM
@@ -20,18 +20,18 @@
 #include <string>
 using namespace std;
 
-class Contact
+class ContactNode
 {
     private:
         string contactName;
         string contactPhoneNum;
-//        ContactNode* nextNodePtr;
+        ContactNode* nextNodePtr;
     public:
         // Contructors
-        Contact(string contactName = "", string contactPhoneNum = "");
+        ContactNode(string contactName, string contactPhoneNum);
         // Setters
         void SetName(string contactName);
-        void SetNumber(string contactPhoneNum);
+        void SetPhoneNumber(string contactPhoneNum);
         // Getters
         string GetName() const;
         string GetPhoneNumber() const;

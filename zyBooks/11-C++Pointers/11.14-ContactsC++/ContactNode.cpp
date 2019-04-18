@@ -3,7 +3,7 @@
  *
  *       Filename:  ContactNode.cpp
  *
- *    Description:  Contact node functions
+ *    Description:  ContactNode library
  *
  *        Version:  1.0
  *        Created:  04/15/2019 03:46:41 PM
@@ -20,18 +20,99 @@
 // For C++ Code
 #include <iostream>
 using namespace std;
+#include "ContactNode.h"
 
 
-// Constants and Globals
-
-// Function Prototypes
-
-// Main Function
-int main(int argc, char* argv[])
+/*!
+ *  Name:  ContactNode
+ *  \brief  Constructor for ContactNode
+ *
+ *  \param name, phone number
+ *  \return
+ */
+ContactNode::ContactNode(string name, string phoneNum)
 {
+    contactName = name;
+    contactPhoneNum = phoneNum;
 
-    return 0;
+    return;
 }
-// Function Definitions
 
 
+
+/*!
+ *  Name:  SetName
+ *  \brief  Set the contactName variable
+ *
+ *  \param  name variable
+ */
+void ContactNode::SetName(string name)
+{
+    this->contactName = name;
+}
+
+
+/*!
+ *  Name:  SetPhoneNumber
+ *  \brief  Set the contactPhoneName variable
+ *
+ *  \param  phoneNum variable
+ */
+void ContactNode::SetPhoneNumber(string phoneNum)
+{
+    this->contactPhoneNum = phoneNum;
+}
+
+
+
+/*!
+ *  Name:  GetName
+ *  \brief  Get the contactName variable
+ */
+string ContactNode::GetName() const
+{
+    return contactName;
+}
+
+
+/*!
+ *  Name:  GetPhoneNumber
+ *  \brief  Get the contactPhoneNum variable
+ */
+string ContactNode::GetPhoneNumber() const
+{
+    return contactPhoneNum;
+}
+
+
+
+/*!
+ *  Name:  InsertAfter
+ *  \brief  
+ */
+void InsertAfter()
+{
+    return;
+}
+
+
+
+/*!
+ *  Name:  GetNext
+ *  \brief  
+ */
+void GetNext()
+{
+    return;
+}
+
+
+
+/*!
+ *  Name:  PrintContacNode
+ *  \brief  Print Contact info
+ */
+void PrintContactNode()
+{
+    cout << " " << endl;
+}
