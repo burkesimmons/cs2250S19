@@ -142,8 +142,11 @@ void AddSong(PlaylistNode*& headNode, PlaylistNode*& tailNode)
     }
     else // Otherwise insert to end of playlist and update tail
     {
-        tailNode->SetNext(newSong);
-        tailNode = newSong;
+        // Why did these two lines work and what do the next two do differently?
+//        tailNode->SetNext(newSong);
+//        tailNode = newSong;
+        tailNode->InsertAfter(newSong); //insert node after
+        tailNode = tailNode->GetNext();
     }
     cout << endl;
     return;
