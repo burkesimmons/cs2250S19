@@ -154,58 +154,57 @@ void AddSong(PlaylistNode*& headNode, PlaylistNode*& tailNode)
 
 void DeleteSong(PlaylistNode*& headNode, PlaylistNode*& tailNode, PlaylistNode*& prevNode)
 {
-PlaylistNode* songNode = 0;
-string uniqueID;
-int songPosition = 0;
-// Output playlist messaging
-cout << "REMOVE SONG" << endl;
-cout << "Enter song's unique ID:" << endl;
-cout << "beat core dump" << endl;
-cin >> uniqueID;
+    PlaylistNode* songNode = 0;
+    string uniqueID;
+    string songName;
+    int songPosition = 0;
+    // Output playlist messaging
+    cout << "REMOVE SONG" << endl;
+    cout << "Enter song's unique ID:" << endl;
+    cin >> uniqueID;
 
-cout << "beat core dump" << endl;
-// Count number of nodes in list
-songNode = headNode;
-cout << "beat core dump" << endl;
+    // Count number of nodes in list
+    songNode = headNode;
 
-// songNode is the song to be removed
-while ((songNode != 0) && !(songNode->GetID() == uniqueID))
-{
-cout << "beat core dump" << endl;
-songPosition++;
-cout << "beat core dump" << endl;
- prevNode = songNode;
-songNode = songNode->GetNext();
-}
+    // songNode is the song to be removed
+    while ((songNode != 0) && !(songNode->GetID() == uniqueID))
+    {
+        songPosition++;
+        prevNode = songNode;
+        songNode = songNode->GetNext();
+    }
 
-if (songNode == 0 )
-{
-// ERROR: songPosition provided by user is invalid
-// Do nothing
-}
-else
-{
-// Remove song at songPosition from list
+    if (songNode == 0 )
+    {
+        // ERROR: songPosition provided by user is invalid
+        // Do nothing
+    }
+    else
+    {
+        // Remove song at songPosition from list
 
-// IF songPosition is 1, list head is removed
-if(songPosition == 1)
-{
-headNode = headNode->GetNext();
-}
-// ELSE prevNode refers to node before the songNode
-else
-{
-prevNode = songNode;
-songNode = songNode->GetNext();
-prevNode->SetNext(songNode->GetNext());
-}
+        // IF songPosition is 1, list head is removed
+        if(songPosition == 1)
+        {
+            headNode = headNode->GetNext();
+            delete songNode;
+        }
+        // ELSE prevNode refers to node before the songNode
+        else
+        {
+//            prevNode = songNode;
+//            songNode = songNode->GetNext();
+            prevNode->SetNext(songNode->GetNext());
+            delete songNode;
+        }
 
-// prevNode updated so next is the node following songNode
-delete songNode;
+        // prevNode updated so next is the node following songNode
+        songName = songNode->GetSongName();
+        delete songNode;
 
-cout << "\"" << songNode->GetSongName() << "\" removed." << endl << endl;
-}
-return;
+        cout << "\"" << songName << "\" removed." << endl << endl;
+    }
+    return;
 }
 
 /*
