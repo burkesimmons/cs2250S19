@@ -16,7 +16,7 @@
  * =====================================================================================
  */
 #ifndef  ITEMTOPURCHASE__INC__
-#define  ITEMTOPURCHASE__INC_
+#define  ITEMTOPURCHASE__INC__
 
 typedef struct ItemToPurchase_struct
 {
