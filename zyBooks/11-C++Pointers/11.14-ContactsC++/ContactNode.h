@@ -28,16 +28,15 @@ class ContactNode
         ContactNode* nextNodePtr;
     public:
         // Contructors
-        ContactNode(string contactName, string contactPhoneNum);
-        // Setters
-        void SetName(string contactName);
-        void SetPhoneNumber(string contactPhoneNum);
+        ContactNode();
+        ContactNode(string initName, string initPhoneNum, 
+                ContactNode* nextLoc = 0);
         // Getters
         string GetName() const;
         string GetPhoneNumber() const;
-        void InsertAfter();
-        void GetNext();
         // Other methods
+        ContactNode* GetNext();
+        void InsertAfter(ContactNode* nodePtr);
         void PrintContactNode();
 };
 

@@ -23,6 +23,15 @@ using namespace std;
 #include "ContactNode.h"
 
 
+ContactNode::ContactNode()
+{
+    this->contactName = "none";
+    this->contactPhoneNum = "none";
+    this->nextNodePtr = 0;
+    return;
+}
+
+
 /*!
  *  Name:  ContactNode
  *  \brief  Constructor for ContactNode
@@ -30,40 +39,32 @@ using namespace std;
  *  \param name, phone number
  *  \return
  */
-ContactNode::ContactNode(string name, string phoneNum)
+ContactNode::ContactNode(string initName, string initPhoneNum, 
+        ContactNode* nextLoc)
 {
-    contactName = name;
-    contactPhoneNum = phoneNum;
-
+    this->contactName = initName;
+    this->contactPhoneNum = initPhoneNum;
+    this->nextNodePtr = nextLoc;
     return;
 }
 
 
 
-/*!
- *  Name:  SetName
- *  \brief  Set the contactName variable
- *
- *  \param  name variable
+/* 
+ * ===  FUNCTION  ======================================================================
+ *         Name:  InsertAfter
+ *  Description:  Insert a node after the last one
+ * =====================================================================================
  */
-void ContactNode::SetName(string name)
+void ContactNode::InsertAfter(ContactNode* nodePtr) 
 {
-    this->contactName = name;
+    ContactNode* tmpNext = 0;
+    tmpNext = this->nextNodePtr;
+    this->nextNodePtr = nodePtr;
+    nodePtr->nextNodePtr = tmpNext;
+
+    return;
 }
-
-
-/*!
- *  Name:  SetPhoneNumber
- *  \brief  Set the contactPhoneName variable
- *
- *  \param  phoneNum variable
- */
-void ContactNode::SetPhoneNumber(string phoneNum)
-{
-    this->contactPhoneNum = phoneNum;
-}
-
-
 
 /*!
  *  Name:  GetName
@@ -85,25 +86,13 @@ string ContactNode::GetPhoneNumber() const
 }
 
 
-
-/*!
- *  Name:  InsertAfter
- *  \brief  
- */
-void InsertAfter()
-{
-    return;
-}
-
-
-
 /*!
  *  Name:  GetNext
  *  \brief  
  */
-void GetNext()
+ContactNode* ContactNode::GetNext()
 {
-    return;
+    return this->nextNodePtr;
 }
 
 
@@ -112,7 +101,9 @@ void GetNext()
  *  Name:  PrintContacNode
  *  \brief  Print Contact info
  */
-void PrintContactNode()
+void ContactNode::PrintContactNode()
 {
-    cout << " " << endl;
+    cout << "Name: " << this->GetName() << endl;
+    cout << "Phone number: " << this->GetPhoneNumber() << endl;
+    return;
 }
