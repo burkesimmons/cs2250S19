@@ -41,14 +41,14 @@ int main(int argc, char* argv[])
 {
     int id = 0;
     char name[MAX] = "";
-    char ans = 'y';
-    char dummy;
+//    char ans = 'y';
+//    char dummy;
 //    Student st;
     Student *headRec = NULL;
-    Student *nextRec = NULL;
     Student *currentRec = NULL;
+    Student *nextRec = NULL;
 
-    while(ans == 'y')
+    for(int i = 0; i < 3; i++)
     {
         // Allocate the memory for the new record
         nextRec = (Student*) malloc(sizeof(Student));
@@ -71,9 +71,9 @@ int main(int argc, char* argv[])
         // Save it to a Student structure
         AddStudent(nextRec, name, id, NULL);
         //Do you want to enter another record [y|n]
-        printf("Do you want to enter another record? [y|n]");
-        scanf("%c%c", &ans, &dummy);
-        fflush(stdin);
+//        printf("Do you want to enter another record? [y|n]");
+//        scanf("%c%c", &ans, &dummy);
+//        fflush(stdin);
         // Save the current record before you request another
         currentRec = nextRec;
     }
