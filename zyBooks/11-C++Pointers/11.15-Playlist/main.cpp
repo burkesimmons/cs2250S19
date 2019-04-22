@@ -157,7 +157,7 @@ void DeleteSong(PlaylistNode*& headNode, PlaylistNode*& tailNode, PlaylistNode*&
     PlaylistNode* songNode = 0;
     string uniqueID;
     string songName;
-    int songPosition = 0;
+    int songPosition = 1;
     // Output playlist messaging
     cout << "REMOVE SONG" << endl;
     cout << "Enter song's unique ID:" << endl;
@@ -165,7 +165,6 @@ void DeleteSong(PlaylistNode*& headNode, PlaylistNode*& tailNode, PlaylistNode*&
 
     // Count number of nodes in list
     songNode = headNode;
-
     // songNode is the song to be removed
     while ((songNode != 0) && !(songNode->GetID() == uniqueID))
     {
@@ -182,24 +181,47 @@ void DeleteSong(PlaylistNode*& headNode, PlaylistNode*& tailNode, PlaylistNode*&
     else
     {
         // Remove song at songPosition from list
-
         // IF songPosition is 1, list head is removed
         if(songPosition == 1)
         {
-            headNode = headNode->GetNext();
             delete songNode;
+            cout << "songNode deleted,I think" << endl;
+            cout << "in songPosition = 1 if statement" << endl;
+                        headNode = headNode->GetNext();
+                        headNode = tailNode;
         }
         // ELSE prevNode refers to node before the songNode
         else
         {
-//            prevNode = songNode;
-//            songNode = songNode->GetNext();
-            prevNode->SetNext(songNode->GetNext());
+            cout << "in else statement of songPostion == 1" << endl;
+            //prevNode = songNode;
+            //songNode = songNode->GetNext();
+            //            prevNode->SetNext(songNode->GetNext());
+            if(songNode == tailNode)
+            {
+                cout << "in songNode = tailNode" << endl;
+                if(songNode == headNode)
+                {
+                    cout << "in songNode == headNode" << endl;
+                    headNode = 0;
+                    tailNode = 0;
+                }
+                else
+                {
+                    cout << "in tailNode = prevNode" << endl;
+                    tailNode = prevNode;
+                }
+            }
+            cout << "end of if songNode == tailNode, just before delete songNode"
+                << endl;
             delete songNode;
         }
 
         // prevNode updated so next is the node following songNode
+//            prevNode->SetNext(songNode->GetNext());
         songName = songNode->GetSongName();
+        cout << "right before print of songName removed, before delete songNode" 
+            << endl;
         delete songNode;
 
         cout << "\"" << songName << "\" removed." << endl << endl;
@@ -282,6 +304,7 @@ void ChangeSongPosition(PlaylistNode*& headNode, PlaylistNode*& tailNode, Playli
     while ((songNode != 0) && (numNodes < (songPosition - 1))) 
     {
         ++numNodes;
+        prevNode = songNode;
         songNode = songNode->GetNext();
     }
 
@@ -295,44 +318,49 @@ void ChangeSongPosition(PlaylistNode*& headNode, PlaylistNode*& tailNode, Playli
 
         // ELSE:
         // STEP 1: Remove song at songPosition from list. Keep reference to that song.
-        
-//        delete songNode;
+        insertPosNode = songNode;
+        delete songNode;
         // If songPosition is 1, list head is removed
-//        if(songNode = 0)
+        if(songPosition = 1)
+        {
+            delete headNode;
+        }
+        else
+        {
             // Else: prevNode refers to node before the songNode
-            // ...
+            prevNode->SetNext(songNode->GetNext());
 
             // prevNode updated so next is the node following songNode
             // ...
 
-        // STEP 2: Insert song at newPosition
+            // STEP 2: Insert song at newPosition
 
-        // Insert songNode at head or if user position is before head
-        // ....
-        if (newPosition <= 1) 
-        {
-            //...
+            // Insert songNode at head or if user position is before head
+            // ....
+            if (newPosition <= 1) 
+            {
+                songNode = headNode;
 
-            cout << "\"" << songNode->GetSongName() << "\" moved to position 1" << endl << endl;
+                cout << "\"" << songNode->GetSongName() << "\" moved to position 1" << endl << endl;
 
-        }
-        else 
-        {
-            // insertPosNode refers to the node before the location songNode is inserted
-            // ...
+            }
+            else 
+            {
+                // insertPosNode refers to the node before the location songNode is inserted
+                insertPosNode = prevNode;
 
-            // Insert songNode to new location
-            // ...
+                // Insert songNode to new location
+                insertPosNode->SetNext(songNode);
 
-            cout << "\"" << songNode->GetSongName() << "\" moved to position " << newPosition << endl << endl;
+                cout << "\"" << songNode->GetSongName() << "\" moved to position " << newPosition << endl << endl;
+            }
         }
     }
-    return;
+        return;
 }
 
 
-void OutputSongsBySpecificArtist(PlaylistNode*& headNode, PlaylistNode*& tailNode, 
-        PlaylistNode*& prevNode)
+void OutputSongsBySpecificArtist(PlaylistNode*& headNode, PlaylistNode*& tailNode, PlaylistNode*& prevNode)
 {
     PlaylistNode* currNode = 0;
     string artistName;
@@ -353,13 +381,15 @@ void OutputSongsBySpecificArtist(PlaylistNode*& headNode, PlaylistNode*& tailNod
         // Output songs with matching artist name
         if (currNode->GetArtistName() == artistName) 
         {
-//            cout << numNodes << "." << endl;
+            cout << numNodes << "." << endl;
             // Print playlist information
-//            cout << endl;
+            currNode->PrintPlaylistNode();
+
+            cout << endl;
         }
         // Get next node
-        // ...
-//        ++numNodes;
+        currNode = currNode->GetNext(); // update to next member
+        ++numNodes;
     }
     return;
 }
@@ -375,8 +405,11 @@ void OutputTotalTime(PlaylistNode*& headNode)
     int totalTime = 0;
 
     // Over List and add up the totalTime
-    // ...
-
+    while(currNode != 0)
+    {
+        totalTime = totalTime + currNode->GetSongLength();
+        currNode = currNode->GetNext();
+    }
     cout << "Total time: " << totalTime << " seconds" << endl << endl;
     return;
 }
