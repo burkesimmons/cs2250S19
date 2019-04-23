@@ -27,30 +27,77 @@ using namespace std;
 // Main Function
 int main(int argc, char* argv[])
 {
-        string name;
-        char* stringPos = nullptr;
-        char* stringQuit = nullptr;
-        stringQuit = strchr(name, 'q');
-    while(stringQuit != nullptr)
-    {
-        cout << "Enter input string:" << endl;
-        getline(cin, name);
-        stringPos ==strchr(name, ',');
-        while(stringPos == nullptr) 
-                && (stringQuit != nullptr)
-        {
-            cout << "Error: No comma in string" << endl;
-            cout << "Enter input string:" << endl;
-            getline(cin, name);
+                char name[50] = "";;
+            while(strchr(name, 'q') == nullptr)
+            {
+                cout << "Enter input string:" << endl;
+                cin.getline(name, 50);
+                int j;
+                for( int i = 0; i < strlen(name); i++) {
+                    while(name[i] == ' ')
+                    {
+                        for(j = i; name[j] != '\0'; j++)
+                        {
+                            name[j] = name[j+1];
+                        }
+                        name[j] = '\0';
+                    }
+                }
+                while((strchr(name, ',') == nullptr) 
+                        && (strchr(name, 'q') == nullptr))
+                {
+                    cout << "Error: No comma in string" << endl;
+                    cout << "Enter input string:" << endl;
+                    cin.getline(name, 50);
+                    int j;
+                    for( int i = 0; i < strlen(name); i++) {
+                        while(name[i] == ' ')
+                        {
+                            for(j = i; name[j] != '\0'; j++)
+                            {
+                                name[j] = name[j+1];
+                            }
+                            name[j] = '\0';
+                        }
+                    }
+                }
+                if(strchr(name, 'q') != nullptr)
+                {
+                    return 1;
+                }
+                char firstWord[50] = "";
+                char secondWord[50] = "";
+                int i = 0;
+                for ( i = 0; i < strlen(name); i++)
+                {
+                    while(name[i] != ',')
+                    {
+                        firstWord[i] = name[i];
+                        break;
+                    }
+                }
+                printf("First word: %s\n", firstWord);
 
-        }
-        if(stringQuit == nullptr)
-        {
-            return 1;
-        }
+                int sizeOfFirstWord;
+
+                for(i = 0; i < strlen(firstWord); i++)
+                {
+                    if(firstWord[i] == '\0')
+                    {
+                        return i;
+                    }
+                }
+                sizeOfFirstWord = i;
+
+                for ( i = sizeOfFirstWord + 1; i < strlen(name); i++)
+                {
+                    while(name[i] != '\0')
+                    {
+                        secondWord[i - (sizeOfFirstWord + 1)] = name[i];
+                        break;
+                    }
+                }
+                printf("Second word: %s\n", secondWord);
+            }
+            return 0;
     }
-    return 0;
-}
-
-
-
