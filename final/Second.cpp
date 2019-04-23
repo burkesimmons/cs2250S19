@@ -19,18 +19,39 @@
 // For C++ Code
 #include <iostream>
 using namespace std;
-
-
 // Constants and Globals
 
 // Function Prototypes
+class Angle
+{
+    private:
+        int degrees;
+        float minutes;
+        char direction;
+    public:
+        // Constructors
+        Angle();
+        // Getters
+        void GetAngle() const;
+        // Setters
+        void SetAngle();
+
+};
+
 
 // Main Function
 int main(int argc, char* argv[])
 {
+    Angle();
 
     return 0;
 }
 // Function Definitions
-
+Angle::Angle()
+{
+    this->degrees = 0;
+    this->minutes = 0;
+    this->direction = 'X';
+    return;
+}
 
