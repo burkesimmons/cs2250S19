@@ -39,14 +39,6 @@ class Angle
 };
 
 
-// Main Function
-int main(int argc, char* argv[])
-{
-    Angle();
-
-    return 0;
-}
-// Function Definitions
 Angle::Angle()
 {
     this->degrees = 0;
@@ -54,4 +46,34 @@ Angle::Angle()
     this->direction = 'X';
     return;
 }
+//Angle::SetAngle()
+//{
+//    
+//}
+
+// Main Function
+int main(int argc, char* argv[])
+{
+    char command = 'y';
+    int degrees;
+    float minutes;
+    char direction;
+    Angle();
+    while(command != 'n')
+    {
+        cout << "Enter angle" << endl;
+        cout << "Degrees (0 to 180):" << endl;
+        cin >> degrees;
+        cout << "Minutes (0.0 to 59.9):" << endl;
+        cin >> minutes;
+        cout << "Direction (N, S, E, W):" << endl;
+        cin >> direction;
+        cout << "You entered " << degrees << " \xF8" << minutes <<
+            "' " << direction << endl;
+        cout << "Enter another (y|n)?" << endl;
+        cin >> command;
+    }
+    return 0;
+}
+// Function Definitions
 
